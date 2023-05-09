@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setupUI()
     }
     
@@ -48,13 +48,14 @@ class MainViewController: UIViewController {
         }
     }
     
-    
     // MARK: - ACTİONS
     @objc func startNewGame() {
         let vc = NewGameViewController()
-//        let navigationController = UINavigationController(rootViewController: vc)
+        // present(vc, animated: true)
+        
+        // let navigationController = UINavigationController(rootViewController: vc)
         navigationController?.pushViewController(vc, animated: true)
+        
     }
-    
     
 }

@@ -11,6 +11,7 @@ import SnapKit
 class MainViewController: UIViewController {
     
     private let newGameButton = UIButton()
+    private let gameTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +20,13 @@ class MainViewController: UIViewController {
     }
     
     private func setupUI() {
+        title = "Games"
         view.backgroundColor = .systemRed
         view.addSubview(newGameButton)
-        
+        view.addSubview(gameTableView)
+        configureConstraints()
         setupNewGameButton()
+        setupGameTableView()
     }
     
     private func setupNewGameButton() {
@@ -35,8 +39,16 @@ class MainViewController: UIViewController {
         newGameButton.setTitleColor(.black, for: .normal)
         newGameButton.tintColor = .black
         newGameButton.addTarget(self, action: #selector(startNewGame), for: .touchUpInside)
-        
-        configureConstraints()
+    }
+    
+    private func setupGameTableView() {
+        gameTableView.register(GameTableViewCell.self, forCellReuseIdentifier: "GameTableViewCell")
+        gameTableView.dataSource = self
+        gameTableView.delegate = self
+        gameTableView.backgroundColor = .clear
+        gameTableView.layer.borderWidth = 1.0
+        gameTableView.layer.borderColor = UIColor.black.cgColor
+        gameTableView.layer.cornerRadius = 5.0
     }
     
     private func configureConstraints() {
@@ -45,6 +57,13 @@ class MainViewController: UIViewController {
             make.height.equalTo(50.0)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(30)
+        }
+        
+        gameTableView.snp.makeConstraints { make in
+            make.width.equalToSuperview().inset(30)
+            make.top.equalToSuperview().inset(90)
+            make.bottom.equalTo(newGameButton.snp.top).offset(-30)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -55,7 +74,18 @@ class MainViewController: UIViewController {
         
         // let navigationController = UINavigationController(rootViewController: vc)
         navigationController?.pushViewController(vc, animated: true)
-        
+    }
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell", for: indexPath) as? GameTableViewCell else { return UITableViewCell() }
+        cell.myLabel.text = "my game is \(indexPath.row)."
+        return cell
+    }
 }

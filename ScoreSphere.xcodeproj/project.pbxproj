@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5219B1F62A0A714600823EC9 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219B1F52A0A714600823EC9 /* GameTableViewCell.swift */; };
 		527C48B92A09500700797511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C48B82A09500700797511 /* AppDelegate.swift */; };
 		527C48C22A09500900797511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527C48C12A09500900797511 /* Assets.xcassets */; };
 		527C48C52A09500900797511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527C48C32A09500900797511 /* LaunchScreen.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5219B1F52A0A714600823EC9 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		527C48B52A09500700797511 /* ScoreSphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreSphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527C48B82A09500700797511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527C48C12A09500900797511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				527C48C12A09500900797511 /* Assets.xcassets */,
 				527C48C32A09500900797511 /* LaunchScreen.storyboard */,
 				527C48C62A09500900797511 /* Info.plist */,
+				5219B1F52A0A714600823EC9 /* GameTableViewCell.swift */,
 			);
 			path = ScoreSphere;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				5293D21A2A0995CB008DA02C /* NewGameViewController.swift in Sources */,
 				527C48B92A09500700797511 /* AppDelegate.swift in Sources */,
 				5293D2152A098CB1008DA02C /* MainViewController.swift in Sources */,
+				5219B1F62A0A714600823EC9 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

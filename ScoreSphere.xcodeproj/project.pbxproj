@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5219B1F62A0A714600823EC9 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219B1F52A0A714600823EC9 /* GameTableViewCell.swift */; };
+		52065A9E2A0BD306007E209A /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52065A9C2A0BD306007E209A /* GameTableViewCell.swift */; };
+		52065A9F2A0BD306007E209A /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52065A9D2A0BD306007E209A /* GameTableViewCell.xib */; };
 		527C48B92A09500700797511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C48B82A09500700797511 /* AppDelegate.swift */; };
 		527C48C22A09500900797511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527C48C12A09500900797511 /* Assets.xcassets */; };
 		527C48C52A09500900797511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527C48C32A09500900797511 /* LaunchScreen.storyboard */; };
 		5293D2152A098CB1008DA02C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D2142A098CB1008DA02C /* MainViewController.swift */; };
 		5293D2182A098DFC008DA02C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5293D2172A098DFC008DA02C /* SnapKit */; };
 		5293D21A2A0995CB008DA02C /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D2192A0995CB008DA02C /* NewGameViewController.swift */; };
+		52F146D72A0D1DAA009567C0 /* MainVC + TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F146D62A0D1DAA009567C0 /* MainVC + TableViewExtension.swift */; };
+		52F146D92A0D301C009567C0 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F146D82A0D301C009567C0 /* UserViewController.swift */; };
+		52F146DD2A0D47DF009567C0 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F146DC2A0D47DF009567C0 /* ColorCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5219B1F52A0A714600823EC9 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		52065A9C2A0BD306007E209A /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		52065A9D2A0BD306007E209A /* GameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameTableViewCell.xib; sourceTree = "<group>"; };
 		527C48B52A09500700797511 /* ScoreSphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreSphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527C48B82A09500700797511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527C48C12A09500900797511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -25,6 +30,9 @@
 		527C48C62A09500900797511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293D2142A098CB1008DA02C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5293D2192A0995CB008DA02C /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
+		52F146D62A0D1DAA009567C0 /* MainVC + TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC + TableViewExtension.swift"; sourceTree = "<group>"; };
+		52F146D82A0D301C009567C0 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		52F146DC2A0D47DF009567C0 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52065A9B2A0BD2F6007E209A /* GameCell */ = {
+			isa = PBXGroup;
+			children = (
+				52065A9C2A0BD306007E209A /* GameTableViewCell.swift */,
+				52065A9D2A0BD306007E209A /* GameTableViewCell.xib */,
+			);
+			path = GameCell;
+			sourceTree = "<group>";
+		};
+		5219B1FE2A0AA31600823EC9 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				5293D2142A098CB1008DA02C /* MainViewController.swift */,
+				52F146D62A0D1DAA009567C0 /* MainVC + TableViewExtension.swift */,
+			);
+			path = MainVC;
+			sourceTree = "<group>";
+		};
+		5219B1FF2A0AA32600823EC9 /* NewGameVC */ = {
+			isa = PBXGroup;
+			children = (
+				5293D2192A0995CB008DA02C /* NewGameViewController.swift */,
+			);
+			path = NewGameVC;
+			sourceTree = "<group>";
+		};
+		5219B2002A0AA35400823EC9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				527C48C62A09500900797511 /* Info.plist */,
+				527C48C12A09500900797511 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5219B2022A0AA38A00823EC9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5219B1FF2A0AA32600823EC9 /* NewGameVC */,
+				5219B1FE2A0AA31600823EC9 /* MainVC */,
+				52F146D82A0D301C009567C0 /* UserViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		527C48AC2A09500700797511 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +111,12 @@
 		527C48B72A09500700797511 /* ScoreSphere */ = {
 			isa = PBXGroup;
 			children = (
+				52065A9B2A0BD2F6007E209A /* GameCell */,
+				5219B2022A0AA38A00823EC9 /* Controllers */,
+				5219B2002A0AA35400823EC9 /* Resources */,
 				527C48B82A09500700797511 /* AppDelegate.swift */,
-				5293D2142A098CB1008DA02C /* MainViewController.swift */,
-				5293D2192A0995CB008DA02C /* NewGameViewController.swift */,
-				527C48C12A09500900797511 /* Assets.xcassets */,
 				527C48C32A09500900797511 /* LaunchScreen.storyboard */,
-				527C48C62A09500900797511 /* Info.plist */,
-				5219B1F52A0A714600823EC9 /* GameTableViewCell.swift */,
+				52F146DC2A0D47DF009567C0 /* ColorCollectionViewCell.swift */,
 			);
 			path = ScoreSphere;
 			sourceTree = "<group>";
@@ -135,6 +187,7 @@
 			files = (
 				527C48C52A09500900797511 /* LaunchScreen.storyboard in Resources */,
 				527C48C22A09500900797511 /* Assets.xcassets in Resources */,
+				52065A9F2A0BD306007E209A /* GameTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,9 +199,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5293D21A2A0995CB008DA02C /* NewGameViewController.swift in Sources */,
+				52F146DD2A0D47DF009567C0 /* ColorCollectionViewCell.swift in Sources */,
+				52F146D92A0D301C009567C0 /* UserViewController.swift in Sources */,
 				527C48B92A09500700797511 /* AppDelegate.swift in Sources */,
 				5293D2152A098CB1008DA02C /* MainViewController.swift in Sources */,
-				5219B1F62A0A714600823EC9 /* GameTableViewCell.swift in Sources */,
+				52F146D72A0D1DAA009567C0 /* MainVC + TableViewExtension.swift in Sources */,
+				52065A9E2A0BD306007E209A /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M84T2Z2B4Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ScoreSphere/Info.plist;
+				INFOPLIST_FILE = ScoreSphere/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -317,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M84T2Z2B4Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ScoreSphere/Info.plist;
+				INFOPLIST_FILE = ScoreSphere/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

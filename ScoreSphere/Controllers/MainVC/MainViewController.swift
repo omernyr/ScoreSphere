@@ -42,13 +42,15 @@ class MainViewController: UIViewController {
     }
     
     private func setupGameTableView() {
-        gameTableView.register(GameTableViewCell.self, forCellReuseIdentifier: "GameTableViewCell")
+        gameTableView.register(GameTableViewCell.register(), forCellReuseIdentifier: GameTableViewCell.identifier)
+        gameTableView.separatorStyle = .none
         gameTableView.dataSource = self
         gameTableView.delegate = self
         gameTableView.backgroundColor = .clear
-        gameTableView.layer.borderWidth = 1.0
         gameTableView.layer.borderColor = UIColor.black.cgColor
         gameTableView.layer.cornerRadius = 5.0
+        gameTableView.layer.borderColor = UIColor.black.cgColor
+        gameTableView.layer.borderWidth = 1.0
     }
     
     private func configureConstraints() {
@@ -77,15 +79,3 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    // lalo
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell", for: indexPath) as? GameTableViewCell else { return UITableViewCell() }
-        cell.myLabel.text = "my game is \(indexPath.row)."
-        return cell
-    }
-}

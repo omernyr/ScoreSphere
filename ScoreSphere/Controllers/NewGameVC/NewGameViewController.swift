@@ -20,7 +20,7 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
     
     private func setupUI() {
         title = "Games"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.app.fill"),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(goToSettingPage))
@@ -52,7 +52,8 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func goToSettingPage() {
-        
+        let vc = UserViewController()
+        present(vc, animated: true)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

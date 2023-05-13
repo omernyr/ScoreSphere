@@ -11,7 +11,7 @@ import SnapKit
 class MainViewController: UIViewController {
     
     private let newGameButton = UIButton()
-    private let gameTableView = UITableView()
+    let gameTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

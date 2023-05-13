@@ -27,45 +27,9 @@ enum Color: CaseIterable {
     }
 }
 
-enum myColor: String {
-    
-    case black
-    case red
-    case yellow
-    case gray
-    case second
-    case indigo
-    case purple
-    case green
-
-    var create: UIColor {
-        switch self {
-        case .black:
-            return UIColor.black
-        case .red:
-            return UIColor.systemRed
-        case .yellow:
-            return UIColor.systemYellow
-        case .gray:
-            return UIColor.gray
-        case .second:
-            return UIColor.secondaryLabel
-        case .indigo:
-            return UIColor.systemIndigo
-        case .purple:
-            return UIColor.systemPurple
-        case .green:
-            return UIColor.systemGreen
-        }
-    }
-}
-
-
-
 class UserViewController: UIViewController, UITextFieldDelegate {
     
     let nameTextField = UITextField()
-    private let colorNames = ["black", "red", "yellow", "gray", "second", "indigo", "purple", "green"]
     
     private let colorCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -78,17 +42,14 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "New User"
-        view.backgroundColor = .systemPurple
         setupUI()
-        
-        
-        
     }
     
     private func setupUI() {
         view.addSubview(nameTextField)
         view.addSubview(colorCollectionView)
+        title = "New User"
+        view.backgroundColor = .systemPurple
         designLabel()
         designCollectionView()
         configureConstraints()
@@ -136,17 +97,38 @@ extension UserViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         guard let cell = colorCollectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.identifier, for: indexPath) as? ColorCollectionViewCell else { return UICollectionViewCell() }
         
-        
-        for i in self.colorNames {
-            let color = myColor(rawValue: "\(i)")
-            cell.backgroundColor = color?.create
-            //            cell.backgroundColor = .setColorName(name: "\(i)")
-        }
-        
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.systemRed.cgColor
+        setCellColors(collectionView: colorCollectionView)
         cell.layer.cornerRadius = 20.0
         return cell
         
+    }
+    
+    func setCellColors(collectionView: UICollectionView) {
+        collectionView.visibleCells.forEach { cell in
+            if let indexPath = collectionView.indexPath(for: cell) {
+                switch indexPath.row % 9 {
+                case 0:
+                    cell.backgroundColor = .systemRed
+                case 1:
+                    cell.backgroundColor = .systemOrange
+                case 2:
+                    cell.backgroundColor = .systemYellow
+                case 3:
+                    cell.backgroundColor = .systemGreen
+                case 4:
+                    cell.backgroundColor = .systemBlue
+                case 5:
+                    cell.backgroundColor = .systemPurple
+                case 6:
+                    cell.backgroundColor = .systemBrown
+                case 7:
+                    cell.backgroundColor = .lightGray
+                case 8:
+                    cell.backgroundColor = .systemFill
+                default:
+                    cell.backgroundColor = .clear
+                }
+            }
+        }
     }
 }

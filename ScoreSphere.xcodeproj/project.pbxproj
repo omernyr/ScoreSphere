@@ -15,6 +15,7 @@
 		5293D2152A098CB1008DA02C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D2142A098CB1008DA02C /* MainViewController.swift */; };
 		5293D2182A098DFC008DA02C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5293D2172A098DFC008DA02C /* SnapKit */; };
 		5293D21A2A0995CB008DA02C /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D2192A0995CB008DA02C /* NewGameViewController.swift */; };
+		52AECB5E2A0F88C90071F800 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AECB5D2A0F88C90071F800 /* UIColor + Extension.swift */; };
 		52F146D72A0D1DAA009567C0 /* MainVC + TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F146D62A0D1DAA009567C0 /* MainVC + TableViewExtension.swift */; };
 		52F146D92A0D301C009567C0 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F146D82A0D301C009567C0 /* UserViewController.swift */; };
 		52F146DD2A0D47DF009567C0 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F146DC2A0D47DF009567C0 /* ColorCollectionViewCell.swift */; };
@@ -30,6 +31,7 @@
 		527C48C62A09500900797511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293D2142A098CB1008DA02C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5293D2192A0995CB008DA02C /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
+		52AECB5D2A0F88C90071F800 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		52F146D62A0D1DAA009567C0 /* MainVC + TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC + TableViewExtension.swift"; sourceTree = "<group>"; };
 		52F146D82A0D301C009567C0 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		52F146DC2A0D47DF009567C0 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				527C48B82A09500700797511 /* AppDelegate.swift */,
 				527C48C32A09500900797511 /* LaunchScreen.storyboard */,
 				52F146DC2A0D47DF009567C0 /* ColorCollectionViewCell.swift */,
+				52AECB5D2A0F88C90071F800 /* UIColor + Extension.swift */,
 			);
 			path = ScoreSphere;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5293D21A2A0995CB008DA02C /* NewGameViewController.swift in Sources */,
+				52AECB5E2A0F88C90071F800 /* UIColor + Extension.swift in Sources */,
 				52F146DD2A0D47DF009567C0 /* ColorCollectionViewCell.swift in Sources */,
 				52F146D92A0D301C009567C0 /* UserViewController.swift in Sources */,
 				527C48B92A09500700797511 /* AppDelegate.swift in Sources */,

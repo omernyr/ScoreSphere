@@ -8,16 +8,65 @@
 import UIKit
 import SnapKit
 
-enum Color: String {
+enum Color: CaseIterable {
+    
     case black
     case red
     case yellow
+    case gray
+    case second
+    case indigo
+    case purple
+    case green
+    case brown
+    
+    
+    func colorValue() -> Int {
+        let colorInt = Color.allCases.count
+        return colorInt
+    }
 }
+
+enum myColor: String {
+    
+    case black
+    case red
+    case yellow
+    case gray
+    case second
+    case indigo
+    case purple
+    case green
+
+    var create: UIColor {
+        switch self {
+        case .black:
+            return UIColor.black
+        case .red:
+            return UIColor.systemRed
+        case .yellow:
+            return UIColor.systemYellow
+        case .gray:
+            return UIColor.gray
+        case .second:
+            return UIColor.secondaryLabel
+        case .indigo:
+            return UIColor.systemIndigo
+        case .purple:
+            return UIColor.systemPurple
+        case .green:
+            return UIColor.systemGreen
+        }
+    }
+}
+
 
 
 class UserViewController: UIViewController, UITextFieldDelegate {
     
     let nameTextField = UITextField()
+    private let colorNames = ["black", "red", "yellow", "gray", "second", "indigo", "purple", "green"]
+    
     private let colorCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -56,6 +105,7 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     private func designCollectionView() {
         colorCollectionView.dataSource = self
         colorCollectionView.delegate = self
+        colorCollectionView.layer.cornerRadius = 5.0
     }
     
     private func configureConstraints() {
@@ -79,13 +129,20 @@ class UserViewController: UIViewController, UITextFieldDelegate {
 
 extension UserViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        7
+        Color.colorValue(.black)()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = colorCollectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.identifier, for: indexPath) as? ColorCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .systemYellow
+        
+        
+        for i in self.colorNames {
+            let color = myColor(rawValue: "\(i)")
+            cell.backgroundColor = color?.create
+            //            cell.backgroundColor = .setColorName(name: "\(i)")
+        }
+        
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.systemRed.cgColor
         cell.layer.cornerRadius = 20.0

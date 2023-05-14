@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -16,9 +15,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GameTableViewCell.identifier, for: indexPath) as? GameTableViewCell else { return UITableViewCell() }
-        cell.firstL.text = "lalo \(indexPath.row)"
-        cell.secondL.text = "lalo \(indexPath.row)"
-        cell.thirdL.text = "lalo \(indexPath.row)"
+        cell.designUI()
         cell.backView.layer.borderWidth = 1.0
         cell.backView.layer.borderColor = UIColor.systemIndigo.cgColor
         cell.backView.backgroundColor = .systemGreen

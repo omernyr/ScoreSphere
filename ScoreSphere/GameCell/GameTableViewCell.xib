@@ -29,45 +29,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzc-mn-g4p">
-                                <rect key="frame" x="129" y="29" width="42" height="102"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZL-Uo-03f">
-                                <rect key="frame" x="8" y="45" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="SwC-4h-Gdh"/>
-                                    <constraint firstAttribute="height" constant="70" id="sJT-4x-OsV"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="28" weight="heavy"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiK-WG-575">
-                                <rect key="frame" x="222" y="45" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="i8X-Ev-qo1"/>
-                                    <constraint firstAttribute="width" constant="70" id="zSR-vE-Aic"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title="">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="28" weight="heavy"/>
-                                </buttonConfiguration>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3NQ-YU-B7G">
+                                <rect key="frame" x="8" y="30" width="284" height="122"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Uzc-mn-g4p" firstAttribute="top" secondItem="jYl-dO-frp" secondAttribute="bottom" constant="8" id="275-33-vHa"/>
-                            <constraint firstItem="wiK-WG-575" firstAttribute="centerY" secondItem="XQB-dU-dgs" secondAttribute="centerY" id="L56-mp-cau"/>
-                            <constraint firstItem="Uzc-mn-g4p" firstAttribute="centerY" secondItem="XQB-dU-dgs" secondAttribute="centerY" id="MIz-vd-YHw"/>
-                            <constraint firstItem="Uzc-mn-g4p" firstAttribute="centerX" secondItem="XQB-dU-dgs" secondAttribute="centerX" id="T67-s2-feG"/>
+                            <constraint firstAttribute="bottom" secondItem="3NQ-YU-B7G" secondAttribute="bottom" constant="8" id="1Ow-wq-2V7"/>
+                            <constraint firstItem="3NQ-YU-B7G" firstAttribute="leading" secondItem="XQB-dU-dgs" secondAttribute="leading" constant="8" id="Jxj-Co-cmb"/>
+                            <constraint firstAttribute="trailing" secondItem="3NQ-YU-B7G" secondAttribute="trailing" constant="8" id="OAT-qH-LEo"/>
                             <constraint firstItem="jYl-dO-frp" firstAttribute="top" secondItem="XQB-dU-dgs" secondAttribute="top" constant="8" id="Xp7-nA-ptY"/>
-                            <constraint firstItem="VZL-Uo-03f" firstAttribute="centerY" secondItem="XQB-dU-dgs" secondAttribute="centerY" id="aAg-4i-c88"/>
-                            <constraint firstItem="VZL-Uo-03f" firstAttribute="leading" secondItem="XQB-dU-dgs" secondAttribute="leading" constant="8" id="bJ4-PX-5nv"/>
-                            <constraint firstAttribute="trailing" secondItem="wiK-WG-575" secondAttribute="trailing" constant="8" id="oHl-Gv-GnP"/>
+                            <constraint firstItem="3NQ-YU-B7G" firstAttribute="top" secondItem="XQB-dU-dgs" secondAttribute="top" constant="30" id="bnN-no-Do5"/>
                             <constraint firstItem="jYl-dO-frp" firstAttribute="centerX" secondItem="XQB-dU-dgs" secondAttribute="centerX" id="wxV-9L-Abu"/>
                         </constraints>
                     </view>
@@ -83,16 +56,12 @@
             <connections>
                 <outlet property="backView" destination="XQB-dU-dgs" id="F4O-Ox-PLe"/>
                 <outlet property="gameNameLabel" destination="jYl-dO-frp" id="DyZ-jp-sxY"/>
-                <outlet property="minusButton" destination="VZL-Uo-03f" id="KWi-ke-X9S"/>
-                <outlet property="plusButton" destination="wiK-WG-575" id="Tn5-rn-fQs"/>
-                <outlet property="pointLabel" destination="Uzc-mn-g4p" id="c8I-UW-ZdO"/>
+                <outlet property="gamesTableView" destination="3NQ-YU-B7G" id="NZH-mu-PD3"/>
             </connections>
             <point key="canvasLocation" x="127" y="80"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="minus" catalog="system" width="128" height="26"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

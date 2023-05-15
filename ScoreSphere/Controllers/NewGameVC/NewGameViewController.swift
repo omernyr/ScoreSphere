@@ -11,6 +11,7 @@ import SnapKit
 class NewGameViewController: UIViewController, UITextFieldDelegate {
     
     private let gameNameTextField = UITextField()
+    private let setNewGame = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,9 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
                                                             action: #selector(goToSettingPage))
         view.backgroundColor = .systemGreen
         view.addSubview(gameNameTextField)
+        view.addSubview(setNewGame)
         designTextField()
+        designButton()
     }
     
     private func designTextField() {
@@ -42,12 +45,32 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
         configureConstraints()
     }
     
+    private func designButton() {
+        setNewGame.layer.borderWidth = 1.0
+        setNewGame.layer.borderColor = UIColor.black.cgColor
+        setNewGame.layer.cornerRadius = 5.0
+        setNewGame.setTitle("Add", for: .normal)
+        setNewGame.backgroundColor = .systemIndigo
+        setNewGame.tintColor = .white
+        let action = UIAction { _ in
+            print("print add")
+        }
+        setNewGame.addTarget(self, action: action, for: .touchUpInside)
+    }
+    
     private func configureConstraints() {
         gameNameTextField.snp.makeConstraints { make in
-            make.width.equalToSuperview().inset(30)
+            make.width.equalToSuperview().inset(30.0)
             make.height.equalTo(50.0)
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
+        }
+        
+        setNewGame.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50.0)
+            make.width.equalToSuperview().inset(20.0)
+            make.bottom.equalToSuperview().inset(30.0)
         }
     }
     

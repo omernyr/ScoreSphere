@@ -8,18 +8,16 @@
 import UIKit
 import SnapKit
 
-class GameTableViewCell: UITableViewCell {
+class GameTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
     
     static let identifier = "GameTableViewCell"
     
     public static func register() -> UINib {
         UINib(nibName: "GameTableViewCell", bundle: nil)
     }
-
+    
     @IBOutlet var backView: UIView!
-    @IBOutlet var minusButton: UIButton!
-    @IBOutlet var plusButton: UIButton!
-    @IBOutlet var pointLabel: UILabel!
+    @IBOutlet var gamesTableView: UITableView!
     @IBOutlet var gameNameLabel: UILabel!
     
     override class func awakeFromNib() {
@@ -27,22 +25,26 @@ class GameTableViewCell: UITableViewCell {
     }
     
     func designUI() {
-//        minusButton.setImage(UIImage(systemName: "minus"), for: .normal)
-        minusButton.layer.cornerRadius = 35.0
-        minusButton.backgroundColor = .systemPurple
-        minusButton.tintColor = .white
-        
-//        plusButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        plusButton.layer.cornerRadius = 35.0
-        plusButton.backgroundColor = .systemPurple
-        plusButton.tintColor = .white
+        gamesTableView.dataSource = self
+        gamesTableView.delegate = self
+        gamesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         configureConstraints()
     }
     
     func configureConstraints() {
-//        minusButton.snp.makeConstraints { make in
-//            make.width
-//        }
+        //        minusButton.snp.makeConstraints { make in
+        //            make.width
+        //        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "test"
+        return cell
     }
 }

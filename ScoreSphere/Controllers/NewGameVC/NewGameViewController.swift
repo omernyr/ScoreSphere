@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol NewGameViewControllerDelegate: class {
+    func addNewGame(game: Game)
+}
+
 class NewGameViewController: UIViewController, UITextFieldDelegate {
     
+    weak var delegate: NewGameViewControllerDelegate?
+    var viewModel: MainTableViewModel = MainTableViewModel()
     private let gameNameTextField = UITextField()
     private let setNewGame = UIButton()
     
@@ -53,9 +59,18 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
         setNewGame.backgroundColor = .systemIndigo
         setNewGame.tintColor = .white
         let action = UIAction { _ in
-            print("print add")
+            
+            guard let gameName = self.gameNameTextField.text else { return }
+            let newGame = Game(name: gameName)
+            self.viewModel.game = newGame
+            self.viewModel.appendElement()
+//
+//
+//            self.delegate?.addNewGame(game: newGame)
+//            self.dismiss(animated: true)
+            
         }
-        setNewGame.addTarget(self, action: action, for: .touchUpInside)
+        setNewGame.addAction(action, for: .touchUpInside)
     }
     
     private func configureConstraints() {
@@ -77,13 +92,6 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
     @objc func goToSettingPage() {
         let vc = UserViewController()
         present(vc, animated: true)
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        print(updatedText)
-        return true
     }
     
 }

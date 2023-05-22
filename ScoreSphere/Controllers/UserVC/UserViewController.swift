@@ -29,8 +29,9 @@ enum Color: CaseIterable {
 
 class UserViewController: UIViewController, UITextFieldDelegate {
     
-    let nameTextField = UITextField()
-    
+    private let nameTextField = UITextField()
+    private let scoreTextField = UITextField()
+    private let addUserButton = UIButton()
     private let colorCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -46,12 +47,16 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupUI() {
-        view.addSubview(nameTextField)
-        view.addSubview(colorCollectionView)
         title = "New User"
         view.backgroundColor = .systemPurple
+        view.addSubview(nameTextField)
+        view.addSubview(colorCollectionView)
+        view.addSubview(scoreTextField)
+        view.addSubview(addUserButton)
         designLabel()
         designCollectionView()
+        designScoreTextField()
+        designAddUserButton()
         configureConstraints()
     }
     
@@ -62,13 +67,23 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         nameTextField.delegate = self
         nameTextField.textAlignment = .center
     }
-    
     private func designCollectionView() {
         colorCollectionView.dataSource = self
         colorCollectionView.delegate = self
         colorCollectionView.layer.cornerRadius = 5.0
     }
-    
+    private func designScoreTextField() {
+        scoreTextField.layer.borderWidth = 1.0
+        scoreTextField.layer.borderColor = UIColor.black.cgColor
+        scoreTextField.layer.cornerRadius = 5.0
+    }
+    private func designAddUserButton() {
+        addUserButton.layer.borderWidth = 1.0
+        addUserButton.layer.borderColor = UIColor.black.cgColor
+        addUserButton.layer.cornerRadius = 5.0
+        addUserButton.tintColor = .white
+        addUserButton.setTitle("Add User", for: .normal)
+    }
     private func configureConstraints() {
         
         nameTextField.snp.makeConstraints { make in
@@ -82,6 +97,20 @@ class UserViewController: UIViewController, UITextFieldDelegate {
             make.top.equalTo(nameTextField.snp.bottom).offset(20)
             make.width.equalToSuperview().inset(20)
             make.height.equalTo(60)
+            make.centerX.equalToSuperview()
+        }
+        
+        scoreTextField.snp.makeConstraints { make in
+            make.top.equalTo(colorCollectionView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(80)
+            make.height.equalTo(80)
+        }
+        
+        addUserButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().inset(20)
+            make.top.equalTo(scoreTextField.snp.bottom).offset(20)
+            make.height.equalTo(50)
             make.centerX.equalToSuperview()
         }
         

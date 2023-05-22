@@ -10,6 +10,10 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
+    // MARK: Variables
+    var games: [Game] = []
+    var viewModel: MainTableViewModel = MainTableViewModel()
+    
     private let newGameButton = UIButton()
     let gameTableView = UITableView()
     
@@ -20,13 +24,14 @@ class MainViewController: UIViewController {
     }
     
     private func setupUI() {
-        title = "Games"
+        title = "Games Bro"
         view.backgroundColor = .systemRed
         view.addSubview(newGameButton)
         view.addSubview(gameTableView)
         configureConstraints()
         setupNewGameButton()
         setupGameTableView()
+        reloadTV()
     }
     
     private func setupNewGameButton() {
@@ -42,15 +47,15 @@ class MainViewController: UIViewController {
     }
     
     private func setupGameTableView() {
-        gameTableView.register(GameTableViewCell.register(), forCellReuseIdentifier: GameTableViewCell.identifier)
+//        gameTableView.register(GameTableViewCell.register(), forCellReuseIdentifier: GameTableViewCell.identifier)
+        gameTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         gameTableView.separatorStyle = .none
         gameTableView.dataSource = self
         gameTableView.delegate = self
-        gameTableView.backgroundColor = .clear
-        gameTableView.layer.borderColor = UIColor.black.cgColor
-        gameTableView.layer.cornerRadius = 5.0
-        gameTableView.layer.borderColor = UIColor.black.cgColor
-        gameTableView.layer.borderWidth = 1.0
+//        gameTableView.backgroundColor = .clear
+//        gameTableView.layer.cornerRadius = 5.0
+//        gameTableView.layer.borderColor = UIColor.black.cgColor
+//        gameTableView.layer.borderWidth = 1.0
     }
     
     private func configureConstraints() {

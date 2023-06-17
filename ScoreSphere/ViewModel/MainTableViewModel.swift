@@ -10,10 +10,4 @@ import UIKit
 
 class MainTableViewModel {
     
-    var game: Game = Game(name: "")
-    var games: [Game] = []
-    
-    func appendElement() {
-        games.append(game)
-    }
 }

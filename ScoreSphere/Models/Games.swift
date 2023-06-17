@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct Game {
-    let name: String
+struct Games: Codable {
+    var games: [Game]?
+}
+
+struct Game: Codable {
+    var name: String?
 }

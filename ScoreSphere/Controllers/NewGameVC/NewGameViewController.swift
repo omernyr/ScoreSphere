@@ -8,69 +8,58 @@
 import UIKit
 import SnapKit
 
-protocol NewGameViewControllerDelegate: class {
-    func addNewGame(game: Game)
+protocol NewGameVCDelegate: AnyObject {
+    func didSaveText(_ text: String)
 }
 
-class NewGameViewController: UIViewController, UITextFieldDelegate {
-    
-    weak var delegate: NewGameViewControllerDelegate?
-    var viewModel: MainTableViewModel = MainTableViewModel()
-    private let gameNameTextField = UITextField()
-    private let setNewGame = UIButton()
+class NewGameViewController: UIViewController {
+    weak var delegate: NewGameVCDelegate?
+
+    private let gameNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Please a void game name 🚀"
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 5.0
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.backgroundColor = .secondarySystemBackground
+        textField.textColor = .black
+        textField.font = UIFont.systemFont(ofSize: 19.0, weight: .bold)
+        textField.textAlignment = .center
+        return textField
+    }()
+    private lazy var setNewGame: UIButton = {
+        let button = UIButton()
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 5.0
+        button.setTitle("Add", for: .normal)
+        button.backgroundColor = .systemIndigo
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(addNewGame), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
     private func setupUI() {
         title = "Games"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.app.fill"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(goToSettingPage))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.app.fill"), style: .plain,
+                                                            target: self, action: #selector(goToSettingPage))
         view.backgroundColor = .systemGreen
         view.addSubview(gameNameTextField)
         view.addSubview(setNewGame)
-        designTextField()
-        designButton()
-    }
-    
-    private func designTextField() {
-        gameNameTextField.delegate = self
-        gameNameTextField.placeholder = "Please a void game name 🚀"
-        gameNameTextField.layer.borderWidth = 1.0
-        gameNameTextField.layer.cornerRadius = 5.0
-        gameNameTextField.layer.borderColor = UIColor.black.cgColor
-        gameNameTextField.backgroundColor = .secondarySystemBackground
-        gameNameTextField.textColor = .black
-        gameNameTextField.font = UIFont.systemFont(ofSize: 19.0, weight: .bold)
-        gameNameTextField.textAlignment = .center
         configureConstraints()
+        gameNameTextField.delegate = self
     }
     
-    private func designButton() {
-        setNewGame.layer.borderWidth = 1.0
-        setNewGame.layer.borderColor = UIColor.black.cgColor
-        setNewGame.layer.cornerRadius = 5.0
-        setNewGame.setTitle("Add", for: .normal)
-        setNewGame.backgroundColor = .systemIndigo
-        setNewGame.tintColor = .white
-        let action = UIAction { _ in
-            
-            guard let gameName = self.gameNameTextField.text else { return }
-            let newGame = Game(name: gameName)
-            self.viewModel.game = newGame
-            self.viewModel.appendElement()
-//
-//
-//            self.delegate?.addNewGame(game: newGame)
-//            self.dismiss(animated: true)
-            
+    @objc func addNewGame() {
+        if let text = gameNameTextField.text {
+            delegate?.didSaveText(text)
+            self.dismiss(animated: true, completion: nil)
         }
-        setNewGame.addAction(action, for: .touchUpInside)
     }
     
     private func configureConstraints() {
@@ -95,3 +84,16 @@ class NewGameViewController: UIViewController, UITextFieldDelegate {
     }
     
 }
+
+extension NewGameViewController: UITextFieldDelegate {
+
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+
+        print(text)
+        
+    }
+ 
+}
+

@@ -11,53 +11,47 @@ import SnapKit
 class MainViewController: UIViewController {
     
     // MARK: Variables
-    var games: [Game] = []
-    var viewModel: MainTableViewModel = MainTableViewModel()
+    var dataArray: [String] = []
     
-    private let newGameButton = UIButton()
-    let gameTableView = UITableView()
+    
+    private lazy var newGameButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.setTitle("New Game", for: .normal)
+        button.layer.borderWidth = 1.0
+        button.layer.cornerRadius = 5.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.backgroundColor = .secondarySystemBackground
+        button.setTitleColor(.black, for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(startNewGame), for: .touchUpInside)
+        return button
+    }()
+    
+    let gameTableView: UITableView = {
+        let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.separatorStyle = .none
+        return tv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
+
     private func setupUI() {
         title = "Games Bro"
         view.backgroundColor = .systemRed
         view.addSubview(newGameButton)
         view.addSubview(gameTableView)
         configureConstraints()
-        setupNewGameButton()
-        setupGameTableView()
-        reloadTV()
-    }
-    
-    private func setupNewGameButton() {
-        newGameButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        newGameButton.setTitle("New Game", for: .normal)
-        newGameButton.layer.borderWidth = 1.0
-        newGameButton.layer.cornerRadius = 5.0
-        newGameButton.layer.borderColor = UIColor.black.cgColor
-        newGameButton.backgroundColor = .secondarySystemBackground
-        newGameButton.setTitleColor(.black, for: .normal)
-        newGameButton.tintColor = .black
-        newGameButton.addTarget(self, action: #selector(startNewGame), for: .touchUpInside)
-    }
-    
-    private func setupGameTableView() {
-//        gameTableView.register(GameTableViewCell.register(), forCellReuseIdentifier: GameTableViewCell.identifier)
-        gameTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        gameTableView.separatorStyle = .none
+        
         gameTableView.dataSource = self
         gameTableView.delegate = self
-//        gameTableView.backgroundColor = .clear
-//        gameTableView.layer.cornerRadius = 5.0
-//        gameTableView.layer.borderColor = UIColor.black.cgColor
-//        gameTableView.layer.borderWidth = 1.0
     }
     
+    // MARK: Configure Constraints
     private func configureConstraints() {
         newGameButton.snp.makeConstraints { make in
             make.width.equalTo(view.snp.width).inset(30)
@@ -74,13 +68,17 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: - ACTİONS
+    // MARK: ACTİONS
     @objc func startNewGame() {
         let vc = NewGameViewController()
-        // present(vc, animated: true)
-        
-        // let navigationController = UINavigationController(rootViewController: vc)
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
+extension MainViewController: NewGameVCDelegate {
+    func didSaveText(_ text: String) {
+        dataArray.append(text)
+        gameTableView.reloadData()
+    }
+}
